@@ -151,6 +151,7 @@
   <ItemGroup>
     <None Include="app.ico" />
     <None Include="ReadMe.txt" />
+    <None Include="teli_dei.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

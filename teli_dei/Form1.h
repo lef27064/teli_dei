@@ -1,14 +1,30 @@
-/*
-Lamprou Eleftherios
-lef27064@otenet.gr
-Ιστοσελίδα προγράμματος http://sourceforge.net/projects/telidei/
-Manual χρήσης εφαρμογής http://sourceforge.net/projects/telidei/files/Documentation/Version%200.1/Help.pdf/download
--------------------------------------------------------------------------------------------------------------------
-
-Creative Commons Attribution/Share-Alike License
-Μπορείτε αντιγράψετε, τροποποιήστε,  και να διανείμετε ελεύθερα τον παρών κώδικα με την αναφορά του δημιουργού
-
-*/
+//*EN
+//    TeliDei 
+//	Simple tool to Create reports forPublic Electricity Corporation of Grecce. This tool must be usefull for Municipalities. The tool can read files from P.E.C change fees factors and year of construction and save as proper files for submit to P.E.C
+//	Copyright (C) 2008-2017  Eleftherios Lamprou
+//
+//	Creative Commons Attribution/Share-Alike License
+//    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by   the Free Software Foundation, either version 3 of the License, or any later version.
+//	This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+//	You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+//	contact e-mail lef27064@otenet.gr
+//	webpage at source forge http://sourceforge.net/projects/telidei/
+//	souce code (current version) https://github.com/lef27064/teli_dei
+//
+//GR
+//	TeliDei
+//	Το λογισμικό teli_dei, έχει στόχο την δημιουργία αναφορών προς την ΔΕΔΗΕ, με στόχο την εξυπηρέτηση στελεχών των Δήμων για την υποβολή μεταβολών Τελών ΔΕΔΗΕ (Δημοτικά Τέλη, Δημοτικό Φόρο, ΤΑΠ). Το πρόγραμμα έχει την δυνατότητα ανάγνωσης του προτώτυπου αρχείου της ΔΕΔΗΕ, επεξεργασία μεμονομένων εγγραφών (ή μαζικών) και δημιουργεία αναφορών σύμφωνα με τα πρότυπα της ΔΕΔΗΕ (Δημιουργία αρχείου για Ψηφιακό Μέσο (Δισκέτα ή CD) για την υποβολή του στο αρμόδιο Δ/νση της ΔΕΗ). Οι εγγραφές μπορούν να τροποποιηθούν στα τετραγωνικά μέτρα των Δημοτικών Τέλων, Δημοτικού Φόρου, ΤΑΠ και έτος κατασκευής
+//	Copyright (C) 2008-2017  Eleftherios Lamprou
+//	Επαφή lef27064@otenet.gr
+//	Ιστοσελίδα προγράμματος http://sourceforge.net/projects/telidei/
+//	Πηγαίος κώδικας (current version) https://github.com/lef27064/teli_dei
+//	
+//	Αδεια Creative Commons Attribution/Share-Alike License
+//	Το  λογισμικό TeliDei, παρέχεται "ΩΣ ΕΧΕΙ", χωρίς περαιτέρω εγγύηση καταλληλότητας και υποστήριξης αυτού.
+//	Η παραγωγή του συγκεκριμένου λογισμικού, δεν αποσκοπεί στην εμπορική εκμετάλλευσή και είναι επιτρεπτή η Δωρεάν Αντιγραφή, Διανομή και Χρήση του. 
+//	
+//	Μπορείτε αντιγράψετε, τροποποιήστε,  και να διανείμετε ελεύθερα τον παρών κώδικα με την αναφορά του δημιουργού. 
 
 #pragma once
 #using <System.dll>
@@ -140,7 +156,7 @@ namespace teli_dei {
 	private: System::Windows::Forms::Button^  SearchNamebutton;
 
 	private: System::Windows::Forms::Form^ SettingsForm;
-	private: System::Windows::Forms::Label^  labelMunicipality;
+
 
 	private: System::Windows::Forms::Button^  buttonSearchProvider;
 	private: System::Windows::Forms::TextBox^  textBoxProvider;
@@ -312,7 +328,6 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SearchBox = (gcnew System::Windows::Forms::TextBox());
 			this->SearchNamebutton = (gcnew System::Windows::Forms::Button());
-			this->labelMunicipality = (gcnew System::Windows::Forms::Label());
 			this->buttonSearchProvider = (gcnew System::Windows::Forms::Button());
 			this->textBoxProvider = (gcnew System::Windows::Forms::TextBox());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
@@ -323,26 +338,26 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->MassProccessButton = (gcnew System::Windows::Forms::Button());
 			this->MassSearchbutton = (gcnew System::Windows::Forms::Button());
 			this->InputDataGrid = (gcnew System::Windows::Forms::DataGridView());
-			this->cKodikosDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cOnomasiaDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cCodeZone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cEtosAdeias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cTetragvnikaMetraTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cKodikosApalagisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cDeiktisXreosisXrisisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cKodikosXreosisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cTetragonikaMetraDimForou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->TetragonikaMetraDimTelon = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cKodikosApalagis = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cKodikosXreosis = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cKodikosDK = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cTaxKodikas = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cPoli = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cArithmos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cOdos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cOnomateponimo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cParoxi = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Arithmos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cParoxi = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cOnomateponimo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cOdos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cArithmos = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cPoli = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cTaxKodikas = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosDK = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosXreosis = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosApalagis = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->TetragonikaMetraDimTelon = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cTetragonikaMetraDimForou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosXreosisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cDeiktisXreosisXrisisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosApalagisTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cTetragvnikaMetraTap = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cEtosAdeias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cCodeZone = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cOnomasiaDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cKodikosDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->ChangedGridView))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -621,16 +636,6 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->SearchNamebutton->UseVisualStyleBackColor = true;
 			this->SearchNamebutton->Click += gcnew System::EventHandler(this, &Form1::buttonSearchName_Click);
 			// 
-			// labelMunicipality
-			// 
-			this->labelMunicipality->AutoSize = true;
-			this->labelMunicipality->Location = System::Drawing::Point(18, 655);
-			this->labelMunicipality->Name = L"labelMunicipality";
-			this->labelMunicipality->Size = System::Drawing::Size(791, 13);
-			this->labelMunicipality->TabIndex = 15;
-			this->labelMunicipality->Text = L"Η εφαρμογή αυτή είναι open source και μπορεί να αντιγραφεί να τροποποιηθεί και να" 
-				L" διανεμηθεί ελεύθερα copyfree Λάμπρου Λευτέρης (lef27064@otenet.gr)";
-			// 
 			// buttonSearchProvider
 			// 
 			this->buttonSearchProvider->Enabled = false;
@@ -723,113 +728,11 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->InputDataGrid->Size = System::Drawing::Size(1203, 225);
 			this->InputDataGrid->TabIndex = 7;
 			// 
-			// cKodikosDimou
+			// Arithmos
 			// 
-			this->cKodikosDimou->HeaderText = L"Κωδικός Δήμου";
-			this->cKodikosDimou->Name = L"cKodikosDimou";
-			this->cKodikosDimou->Width = 50;
-			// 
-			// cOnomasiaDimou
-			// 
-			this->cOnomasiaDimou->HeaderText = L"Ονομασία Δήμου";
-			this->cOnomasiaDimou->Name = L"cOnomasiaDimou";
-			this->cOnomasiaDimou->Width = 70;
-			// 
-			// cCodeZone
-			// 
-			this->cCodeZone->HeaderText = L"Κωδ. ζώνης";
-			this->cCodeZone->Name = L"cCodeZone";
-			this->cCodeZone->ReadOnly = true;
-			// 
-			// cEtosAdeias
-			// 
-			this->cEtosAdeias->HeaderText = L"Ετος Αδειας";
-			this->cEtosAdeias->Name = L"cEtosAdeias";
-			this->cEtosAdeias->Width = 60;
-			// 
-			// cTetragvnikaMetraTap
-			// 
-			this->cTetragvnikaMetraTap->HeaderText = L"m2 Τ.Α.Π.";
-			this->cTetragvnikaMetraTap->Name = L"cTetragvnikaMetraTap";
-			this->cTetragvnikaMetraTap->Width = 50;
-			// 
-			// cKodikosApalagisTap
-			// 
-			this->cKodikosApalagisTap->HeaderText = L"Κωδικός Απαλαγής ΤΑΠ";
-			this->cKodikosApalagisTap->Name = L"cKodikosApalagisTap";
-			this->cKodikosApalagisTap->Width = 50;
-			// 
-			// cDeiktisXreosisXrisisTap
-			// 
-			this->cDeiktisXreosisXrisisTap->HeaderText = L"Δείκτης Χρέωσης Χρήσης ΤΑΠ";
-			this->cDeiktisXreosisXrisisTap->Name = L"cDeiktisXreosisXrisisTap";
-			this->cDeiktisXreosisXrisisTap->Width = 60;
-			// 
-			// cKodikosXreosisTap
-			// 
-			this->cKodikosXreosisTap->HeaderText = L"Κωδικός Χρέωσης Τ.Α.Π.";
-			this->cKodikosXreosisTap->Name = L"cKodikosXreosisTap";
-			this->cKodikosXreosisTap->Width = 50;
-			// 
-			// cTetragonikaMetraDimForou
-			// 
-			this->cTetragonikaMetraDimForou->HeaderText = L"m2 Δημοτικού Φόρου";
-			this->cTetragonikaMetraDimForou->Name = L"cTetragonikaMetraDimForou";
-			this->cTetragonikaMetraDimForou->Width = 50;
-			// 
-			// TetragonikaMetraDimTelon
-			// 
-			this->TetragonikaMetraDimTelon->HeaderText = L"m2 Δημ. Τελών";
-			this->TetragonikaMetraDimTelon->Name = L"TetragonikaMetraDimTelon";
-			this->TetragonikaMetraDimTelon->Width = 50;
-			// 
-			// cKodikosApalagis
-			// 
-			this->cKodikosApalagis->HeaderText = L"Κωδικός Απαλαγής";
-			this->cKodikosApalagis->Name = L"cKodikosApalagis";
-			this->cKodikosApalagis->Width = 40;
-			// 
-			// cKodikosXreosis
-			// 
-			this->cKodikosXreosis->HeaderText = L"Κωδικός Χρέωσης";
-			this->cKodikosXreosis->Name = L"cKodikosXreosis";
-			this->cKodikosXreosis->Width = 40;
-			// 
-			// cKodikosDK
-			// 
-			this->cKodikosDK->HeaderText = L"Κωδικός Δ.Κ.";
-			this->cKodikosDK->Name = L"cKodikosDK";
-			this->cKodikosDK->Width = 40;
-			// 
-			// cTaxKodikas
-			// 
-			this->cTaxKodikas->HeaderText = L"Τ.Κ.";
-			this->cTaxKodikas->Name = L"cTaxKodikas";
-			this->cTaxKodikas->Width = 40;
-			// 
-			// cPoli
-			// 
-			this->cPoli->HeaderText = L"Πόλη";
-			this->cPoli->Name = L"cPoli";
-			this->cPoli->Width = 60;
-			// 
-			// cArithmos
-			// 
-			this->cArithmos->HeaderText = L"Αριθμός";
-			this->cArithmos->Name = L"cArithmos";
-			this->cArithmos->Width = 30;
-			// 
-			// cOdos
-			// 
-			this->cOdos->HeaderText = L"Οδός";
-			this->cOdos->Name = L"cOdos";
-			this->cOdos->Width = 80;
-			// 
-			// cOnomateponimo
-			// 
-			this->cOnomateponimo->HeaderText = L"Ονοματεπώνυμο";
-			this->cOnomateponimo->Name = L"cOnomateponimo";
-			this->cOnomateponimo->Width = 130;
+			this->Arithmos->HeaderText = L"A/A";
+			this->Arithmos->Name = L"Arithmos";
+			this->Arithmos->Width = 30;
 			// 
 			// cParoxi
 			// 
@@ -837,11 +740,113 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->cParoxi->Name = L"cParoxi";
 			this->cParoxi->Width = 80;
 			// 
-			// Arithmos
+			// cOnomateponimo
 			// 
-			this->Arithmos->HeaderText = L"A/A";
-			this->Arithmos->Name = L"Arithmos";
-			this->Arithmos->Width = 30;
+			this->cOnomateponimo->HeaderText = L"Ονοματεπώνυμο";
+			this->cOnomateponimo->Name = L"cOnomateponimo";
+			this->cOnomateponimo->Width = 130;
+			// 
+			// cOdos
+			// 
+			this->cOdos->HeaderText = L"Οδός";
+			this->cOdos->Name = L"cOdos";
+			this->cOdos->Width = 80;
+			// 
+			// cArithmos
+			// 
+			this->cArithmos->HeaderText = L"Αριθμός";
+			this->cArithmos->Name = L"cArithmos";
+			this->cArithmos->Width = 30;
+			// 
+			// cPoli
+			// 
+			this->cPoli->HeaderText = L"Πόλη";
+			this->cPoli->Name = L"cPoli";
+			this->cPoli->Width = 60;
+			// 
+			// cTaxKodikas
+			// 
+			this->cTaxKodikas->HeaderText = L"Τ.Κ.";
+			this->cTaxKodikas->Name = L"cTaxKodikas";
+			this->cTaxKodikas->Width = 40;
+			// 
+			// cKodikosDK
+			// 
+			this->cKodikosDK->HeaderText = L"Κωδικός Δ.Κ.";
+			this->cKodikosDK->Name = L"cKodikosDK";
+			this->cKodikosDK->Width = 40;
+			// 
+			// cKodikosXreosis
+			// 
+			this->cKodikosXreosis->HeaderText = L"Κωδικός Χρέωσης";
+			this->cKodikosXreosis->Name = L"cKodikosXreosis";
+			this->cKodikosXreosis->Width = 40;
+			// 
+			// cKodikosApalagis
+			// 
+			this->cKodikosApalagis->HeaderText = L"Κωδικός Απαλαγής";
+			this->cKodikosApalagis->Name = L"cKodikosApalagis";
+			this->cKodikosApalagis->Width = 40;
+			// 
+			// TetragonikaMetraDimTelon
+			// 
+			this->TetragonikaMetraDimTelon->HeaderText = L"m2 Δημ. Τελών";
+			this->TetragonikaMetraDimTelon->Name = L"TetragonikaMetraDimTelon";
+			this->TetragonikaMetraDimTelon->Width = 50;
+			// 
+			// cTetragonikaMetraDimForou
+			// 
+			this->cTetragonikaMetraDimForou->HeaderText = L"m2 Δημοτικού Φόρου";
+			this->cTetragonikaMetraDimForou->Name = L"cTetragonikaMetraDimForou";
+			this->cTetragonikaMetraDimForou->Width = 50;
+			// 
+			// cKodikosXreosisTap
+			// 
+			this->cKodikosXreosisTap->HeaderText = L"Κωδικός Χρέωσης Τ.Α.Π.";
+			this->cKodikosXreosisTap->Name = L"cKodikosXreosisTap";
+			this->cKodikosXreosisTap->Width = 50;
+			// 
+			// cDeiktisXreosisXrisisTap
+			// 
+			this->cDeiktisXreosisXrisisTap->HeaderText = L"Δείκτης Χρέωσης Χρήσης ΤΑΠ";
+			this->cDeiktisXreosisXrisisTap->Name = L"cDeiktisXreosisXrisisTap";
+			this->cDeiktisXreosisXrisisTap->Width = 60;
+			// 
+			// cKodikosApalagisTap
+			// 
+			this->cKodikosApalagisTap->HeaderText = L"Κωδικός Απαλαγής ΤΑΠ";
+			this->cKodikosApalagisTap->Name = L"cKodikosApalagisTap";
+			this->cKodikosApalagisTap->Width = 50;
+			// 
+			// cTetragvnikaMetraTap
+			// 
+			this->cTetragvnikaMetraTap->HeaderText = L"m2 Τ.Α.Π.";
+			this->cTetragvnikaMetraTap->Name = L"cTetragvnikaMetraTap";
+			this->cTetragvnikaMetraTap->Width = 50;
+			// 
+			// cEtosAdeias
+			// 
+			this->cEtosAdeias->HeaderText = L"Ετος Αδειας";
+			this->cEtosAdeias->Name = L"cEtosAdeias";
+			this->cEtosAdeias->Width = 60;
+			// 
+			// cCodeZone
+			// 
+			this->cCodeZone->HeaderText = L"Κωδ. ζώνης";
+			this->cCodeZone->Name = L"cCodeZone";
+			this->cCodeZone->ReadOnly = true;
+			// 
+			// cOnomasiaDimou
+			// 
+			this->cOnomasiaDimou->HeaderText = L"Ονομασία Δήμου";
+			this->cOnomasiaDimou->Name = L"cOnomasiaDimou";
+			this->cOnomasiaDimou->Width = 70;
+			// 
+			// cKodikosDimou
+			// 
+			this->cKodikosDimou->HeaderText = L"Κωδικός Δήμου";
+			this->cKodikosDimou->Name = L"cKodikosDimou";
+			this->cKodikosDimou->Width = 50;
 			// 
 			// flowLayoutPanel1
 			// 
@@ -866,7 +871,6 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->Controls->Add(this->buttonPrintReport);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->labelMunicipality);
 			this->Controls->Add(this->MakeReportButton);
 			this->Controls->Add(this->InputFromFilebutton);
 			this->Controls->Add(this->SaveChangesbutton);

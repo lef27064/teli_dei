@@ -71,6 +71,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ReadMe.txt" />
+    <None Include="teli_dei.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
