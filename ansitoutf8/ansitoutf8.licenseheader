@@ -1,4 +1,5 @@
-﻿//*EN
+﻿extensions: .cs .cpp .h
+//*EN
 //    TeliDei 
 //	Simple tool to Create reports forPublic Electricity Corporation of Grecce. This tool must be usefull for Municipalities. The tool can read files from P.E.C change fees factors and year of construction and save as proper files for submit to P.E.C
 //	Copyright (C) 2008-2017  Eleftherios Lamprou
@@ -25,36 +26,3 @@
 //	Η παραγωγή του συγκεκριμένου λογισμικού, δεν αποσκοπεί στην εμπορική εκμετάλλευσή και είναι επιτρεπτή η Δωρεάν Αντιγραφή, Διανομή και Χρήση του. 
 //	
 //	Μπορείτε αντιγράψετε, τροποποιήστε,  και να διανείμετε ελεύθερα τον παρών κώδικα με την αναφορά του δημιουργού. 
-
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using System.IO; 
-
-
-namespace ansiToUTF8
-{
-    public class AnsiToUtf8
-    {
-        public static string readFileAsUtf8(string fileName)
-      {
-            Encoding encoding = Encoding.Default;
-            String original = String.Empty;
-
-            using (StreamReader sr = new StreamReader(fileName, Encoding.Default))
-            {
-                original = sr.ReadToEnd();
-                encoding = sr.CurrentEncoding;
-                sr.Close();
-            }
-
-            if (encoding == Encoding.UTF8)
-                return original;
-
-            byte[] encBytes = encoding.GetBytes(original);
-            byte[] utf8Bytes = Encoding.Convert(encoding, Encoding.UTF8, encBytes);
-            return Encoding.UTF8.GetString(utf8Bytes);
-        }
-    }
-}
