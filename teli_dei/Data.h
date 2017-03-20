@@ -38,6 +38,7 @@ using namespace System::Runtime::Serialization::Formatters::Soap;
 
 
 [Serializable]
+/*Το αρχείο από την ΔΕΔΗΕ*/
 value struct InputData{
 	int AfxonArithmos;
 	System::String^ Periferia;							//Περιφέρεια
@@ -67,7 +68,7 @@ value struct InputData{
 
 };
 
-/*Το αρχείο πρός τη Δ.Ε.Η.*/
+/*Το αρχείο πρός τη ΔΕΔΗΕ */
 value struct OutputData{
 	int AfxonArithmos;									//Αυξων Αριθμός
 	System::String^ Periferia;							//Περιφέρεια
@@ -87,11 +88,12 @@ value struct OutputData{
 	System::String^ KodikosDimou;						//Κωδικός Δήμου
 };
 
+/*Αναζήτηση για συγκεκριμένη παροχή σε δημοτικό διαμέρισμα και συγκεκριμένο κωδικό ζώνης */
 value class ResultFromSearch
 {
 public:
-		int Result;
-		String^ ZoneCode;
-		String^ diamerisma; 
+		int Result;										//Αποτέλεσμα αναζήτησης
+		String^ ZoneCode;								//Κωδικός Ζώνης
+		String^ diamerisma;								//Δημοτικό Διαμέρισμα
 
 };

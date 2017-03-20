@@ -161,11 +161,11 @@ namespace teli_dei{
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(379, 198);
+			this->label2->Location = System::Drawing::Point(353, 194);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(73, 13);
+			this->label2->Size = System::Drawing::Size(107, 13);
 			this->label2->TabIndex = 13;
-			this->label2->Text = L"και με κωδικό";
+			this->label2->Text = L"και με κωδικό ζώνης";
 			// 
 			// MassProccesstextBoxDiamerisma
 			// 
@@ -195,7 +195,7 @@ namespace teli_dei{
 			this->Controls->Add(this->MassProccessListBox);
 			this->Controls->Add(this->label1);
 			this->Name = L"MassProccessSearchForm";
-			this->Text = L"Μαζική αναζήτηση Εγγραφών";
+			this->Text = L"Μαζική αναζήτηση εγγραφών";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

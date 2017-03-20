@@ -327,11 +327,14 @@ void ClassDei::SaveToBinaryData(void)
 void ClassDei::ReadSettings(ClassDei^ SettingsDei,String^ FileName )
 {
 	
+	
 	String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-	String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+	String ^ path = Path::Combine(appDataDir, L"TeliDei");
 	
 	XmlSerializer^ serializer = gcnew XmlSerializer( SettingsStruct::typeid );
 				   // A FileStream is needed to read the XML document.
+	if ( !File::Exists(path+"\\"+ FileName))
+		DefaultSettings();
 	FileStream^ fs = gcnew FileStream( path+"\\"+ FileName,FileMode::Open );
  
 				  /* Use the Deserialize method to restore the object's state with data from the XML document. */
@@ -362,7 +365,7 @@ void ClassDei::ReadSettings(ClassDei^ SettingsDei)
 void ClassDei::UpdateSettings(void)
 {
 		String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-		String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+		String ^ path = Path::Combine(appDataDir, L"TeliDei");
 		
 		XmlSerializer^ serializer = gcnew XmlSerializer(SettingsStruct::typeid );
 		TextWriter^ writer = gcnew StreamWriter( path+"\\settings.xml" );
@@ -373,10 +376,10 @@ void ClassDei::UpdateSettings(void)
 void ClassDei::SaveSettings(SettingsStruct^ SettingsDei, String^ FileName)
 {
 	String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-	String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+	String ^ path = Path::Combine(appDataDir, L"TeliDei");
 	
 	if (!Directory::Exists(path))
-				Directory::CreateDirectory(path);  //Δημιουργεία του Directory teli_dei
+				Directory::CreateDirectory(path);  //Δημιουργεία του Directory telidei
 				
 	
 	XmlSerializer^ serializer = gcnew XmlSerializer(SettingsStruct::typeid );
@@ -412,7 +415,7 @@ void ClassDei::DefaultSettings(String^ Region, String^ Municipality, String^ Use
 void ClassDei::DefaultSettings()
 {
 	
-	this->Settings->Region = "";
+	this->Settings->Region = "Ιωάννινα";
 	this->Settings->Municipality = "Δήμος Πωγωνίου";
 	this->Settings->UserName = "Ελευθέριος Λάμπρου";
 	this->Settings->Telephone = "26533-60113";
@@ -425,7 +428,7 @@ void ClassDei::DefaultSettings()
 
 SavedDataStruct::SavedDataStruct(void)
 {
-	Data = gcnew List<InputData>(100000);
+	Data = gcnew List<InputData>(20000);
 }
 
 SavedDataStruct::SavedDataStruct(int isize)
@@ -438,7 +441,7 @@ void ClassDei::SaveData(ClassDei^ DataDei, String^ FileName)
 {
 			 
 		String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-		String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+		String ^ path = Path::Combine(appDataDir, L"TeliDei");
      	if (!Directory::Exists(path)){
 			Directory::CreateDirectory(path);}
 	
@@ -467,11 +470,14 @@ void ClassDei::SaveData(void)
 void ClassDei::ReadData(ClassDei^ DataDei, String^ FileName)
 {
 			 
-		String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-		String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+		//SaveData();
+	    String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
+		String ^ path = Path::Combine(appDataDir, L"TeliDei");
      	if (!Directory::Exists(path)){
 			Directory::CreateDirectory(path);}
 	
+		if ( !File::Exists(path+"\\"+ FileName))
+		SaveData();
 
 		// Αποθήκευση του τρέχοντος πίνακα για χρήση 
 		//SavedDataStruct^ SavedData = gcnew SavedDataStruct;

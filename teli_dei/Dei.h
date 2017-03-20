@@ -42,6 +42,8 @@ using namespace System::Xml;
 using namespace System::Xml::Serialization;
 using namespace System::Runtime::Serialization::Formatters::Binary;	
 
+/*Η δομή αυτή αποθηκεύετεαι στον δίσκο με την έξοδο απο το πρόγραμμα και αφορά τα δεδομένα*/
+
 [Serializable]
 public ref class SavedDataStruct
 {

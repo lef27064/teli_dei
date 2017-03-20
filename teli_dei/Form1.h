@@ -33,7 +33,7 @@
 #include "Settings.h"
 #include "MassProccessForm.h"
 #include "MassProccessSearchForm.h"
-
+#include "AboutForm.h"
 namespace teli_dei {
 	using namespace System;
 	using namespace System::IO;
@@ -75,13 +75,13 @@ namespace teli_dei {
 			
 			
 			String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-			String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+			String ^ path = Path::Combine(appDataDir, L"TeliDei");
 			XmlSerializer^ serializer = gcnew XmlSerializer(ClassDei::typeid );
 
 			//Υπάρχει το Directory?
 			if (!Directory::Exists(path))
 			{
-				dei = gcnew ClassDei(0);				//Δημιουργεία του Directory teli_dei
+				dei = gcnew ClassDei(0);				//Δημιουργεία του Directory telidei
 				dei->SaveSettings();				// Γράψε ένα settings.xml στο directory
 				dei->SaveData();					// Γράψε ένα data.xml στο directory
 				
@@ -156,8 +156,7 @@ namespace teli_dei {
 	private: System::Windows::Forms::Button^  SearchNamebutton;
 
 	private: System::Windows::Forms::Form^ SettingsForm;
-
-
+	
 	private: System::Windows::Forms::Button^  buttonSearchProvider;
 	private: System::Windows::Forms::TextBox^  textBoxProvider;
 	private: System::Windows::Forms::OpenFileDialog^  openFileDialog;
@@ -216,6 +215,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  cCodeZone;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  cOnomasiaDimou;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  cKodikosDimou;
 private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
+private: System::Windows::Forms::Button^  AboutButton;
 
 
 
@@ -359,6 +359,7 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->cOnomasiaDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->cKodikosDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->AboutButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->ChangedGridView))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->InputDataGrid))->BeginInit();
@@ -857,12 +858,23 @@ private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 			this->flowLayoutPanel1->Size = System::Drawing::Size(1210, 0);
 			this->flowLayoutPanel1->TabIndex = 29;
 			// 
+			// AboutButton
+			// 
+			this->AboutButton->Location = System::Drawing::Point(1140, 460);
+			this->AboutButton->Name = L"AboutButton";
+			this->AboutButton->Size = System::Drawing::Size(58, 47);
+			this->AboutButton->TabIndex = 30;
+			this->AboutButton->Text = L"Περί";
+			this->AboutButton->UseVisualStyleBackColor = true;
+			this->AboutButton->Click += gcnew System::EventHandler(this, &Form1::AboutButton_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->ClientSize = System::Drawing::Size(1210, 674);
+			this->Controls->Add(this->AboutButton);
 			this->Controls->Add(this->InputDataGrid);
 			this->Controls->Add(this->MassSearchbutton);
 			this->Controls->Add(this->MassProccessButton);
@@ -1158,7 +1170,7 @@ private: void CreateHtmlReport(String^ FileName)
 	 {
 		System::IO::TextWriter^ tw; 
 		String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-		String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+		String ^ path = Path::Combine(appDataDir, L"TeliDei");
 		
 			
 			try
@@ -1514,7 +1526,7 @@ private: System::Void buttonMakeReport_Click(System::Object^  sender, System::Ev
 		 private: void AppendLogFile(System::String^ FileName)
 				  {
 					  String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-					  String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+					  String ^ path = Path::Combine(appDataDir, L"TeliDei");
 					  FileStream^ fs;
 					  DateTime dt = DateTime::Now;
 
@@ -1820,7 +1832,7 @@ private: System::Void buttonSearchProvider_Click(System::Object^  sender, System
 		 //Εκτύπωση της αναφοράς
 private: System::Void buttonPrintReport_Click(System::Object^  sender, System::EventArgs^  e) {
 			  String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-			  String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+			  String ^ path = Path::Combine(appDataDir, L"TeliDei");
 			 if (this->ChangedGridView->Rows->Count>0)
 				if (IsFromSingleRegion())
 				{
@@ -2082,5 +2094,10 @@ private: void FindDTEqualDFEqualTAP(void)
 	
 		
 	};
+private: System::Void AboutButton_Click(System::Object^  sender, System::EventArgs^  e) {
+			 AboutForm^ aAboutForm = gcnew AboutForm();
+			 aAboutForm->ShowDialog();
+
+		 }
 };
 };

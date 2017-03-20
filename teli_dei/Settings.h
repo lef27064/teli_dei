@@ -262,7 +262,7 @@ namespace teli_dei{
 
 
 				String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-				String ^ path = Path::Combine(appDataDir, L"Teli_Dei");
+				String ^ path = Path::Combine(appDataDir, L"TeliDei");
 				if (!Directory::Exists(path))
 				{
 					Directory::CreateDirectory(path);

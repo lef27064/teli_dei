@@ -26,43 +26,88 @@
 //	
 //	Μπορείτε αντιγράψετε, τροποποιήστε,  και να διανείμετε ελεύθερα τον παρών κώδικα με την αναφορά του δημιουργού. 
 
-#include "stdafx.h"
+#pragma once
 
-using namespace System;
-using namespace System::Reflection;
-using namespace System::Runtime::CompilerServices;
-using namespace System::Runtime::InteropServices;
-using namespace System::Security::Permissions;
+namespace teli_dei {
 
-//
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly:AssemblyTitleAttribute("telidei")];
-[assembly:AssemblyDescriptionAttribute("")];
-[assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("")];
-[assembly:AssemblyProductAttribute("telidei")];
-[assembly:AssemblyCopyrightAttribute("CopyRight Lamprou Eleftherios 2011-2017")];
-[assembly:AssemblyTrademarkAttribute("")];
-[assembly:AssemblyCultureAttribute("")];
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
 
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version
-//      Build Number
-//      Revision
-//
-// You can specify all the value or you can default the Revision and Build Numbers
-// by using the '*' as shown below:
+	/// <summary>
+	/// Summary for AboutForm
+	/// </summary>
+	public ref class AboutForm : public System::Windows::Forms::Form
+	{
+	public:
+		AboutForm(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
 
-[assembly:AssemblyVersionAttribute("4.6.*")];
+	protected:
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		~AboutForm()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Label^  labelAboutText;
+	protected: 
 
-[assembly:ComVisible(false)];
+	protected: 
 
-[assembly:CLSCompliantAttribute(true)];
+	protected: 
 
-[assembly:SecurityPermission(SecurityAction::RequestMinimum, UnmanagedCode = true)];
+	private:
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(AboutForm::typeid));
+			this->labelAboutText = (gcnew System::Windows::Forms::Label());
+			this->SuspendLayout();
+			// 
+			// labelAboutText
+			// 
+			this->labelAboutText->AutoSize = true;
+			this->labelAboutText->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->labelAboutText->Location = System::Drawing::Point(0, 0);
+			this->labelAboutText->Name = L"labelAboutText";
+			this->labelAboutText->Size = System::Drawing::Size(523, 364);
+			this->labelAboutText->TabIndex = 0;
+			this->labelAboutText->Text = resources->GetString(L"labelAboutText.Text");
+			// 
+			// AboutForm
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(749, 489);
+			this->Controls->Add(this->labelAboutText);
+			this->Name = L"AboutForm";
+			this->Text = L"Περί";
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+#pragma endregion
+	};
+}

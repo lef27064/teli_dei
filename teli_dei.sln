@@ -11,6 +11,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionHelper", "VersionHelper\VersionHelper.csproj", "{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "SetupTeliDei", "SetupTeliDei\SetupTeliDei.isproj", "{5F2CC57C-1544-4F09-A149-7DCD8361BB57}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB} = {6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B} = {3716D2C6-7204-4842-9988-C5F919B7AD5B}
+		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3} = {A90EC7D5-64D6-4822-8020-7A1A3D3847E3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,8 +63,8 @@ Global
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.DVD-5|x86.ActiveCfg = Debug|Win32
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.DVD-5|x86.Build.0 = Debug|Win32
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Any CPU.ActiveCfg = Release|Win32
-		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Mixed Platforms.ActiveCfg = Debug|Win32
+		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Mixed Platforms.Build.0 = Debug|Win32
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Win32.ActiveCfg = Release|Win32
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|Win32.Build.0 = Release|Win32
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}.Release|x86.ActiveCfg = Debug|Win32
@@ -81,8 +86,9 @@ Global
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.CD_ROM|x86.Build.0 = Release|x86
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Mixed Platforms.Build.0 = Release|Any CPU
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|x86.ActiveCfg = Debug|x86
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Debug|x86.Build.0 = Debug|x86
@@ -95,8 +101,8 @@ Global
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.DVD-5|x86.Build.0 = Debug|x86
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Win32.ActiveCfg = Release|x86
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|Win32.Build.0 = Release|x86
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B}.Release|x86.ActiveCfg = Release|x86
@@ -129,8 +135,8 @@ Global
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.DVD-5|x86.ActiveCfg = Debug|Any CPU
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|Win32.ActiveCfg = Release|Any CPU
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.Release|x86.ActiveCfg = Release|Any CPU
 		{6FEAD9B9-115F-4722-B53C-65DA8F4CB6CB}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
