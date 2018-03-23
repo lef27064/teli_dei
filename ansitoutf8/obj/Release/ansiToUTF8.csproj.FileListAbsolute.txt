@@ -1,0 +1,5 @@
+C:\Users\PC\Source\Repos\teli_dei\ansitoutf8\bin\Release\Properties\AssemblyInfo.cs
+C:\Users\PC\Source\Repos\teli_dei\ansitoutf8\bin\Release\ansiToUTF8.dll
+C:\Users\PC\Source\Repos\teli_dei\ansitoutf8\bin\Release\ansiToUTF8.pdb
+C:\Users\PC\Source\Repos\teli_dei\ansitoutf8\obj\Release\ansiToUTF8.dll
+C:\Users\PC\Source\Repos\teli_dei\ansitoutf8\obj\Release\ansiToUTF8.pdb

@@ -1,0 +1,99 @@
+﻿Build started 23/3/2018 1:08:04 μμ.
+     1>Project "C:\Users\PC\Source\Repos\teli_dei\teli_dei\teli_dei.vcxproj" on node 2 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files\Windows Kits\8.0\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\teli_dei.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FUC:\Users\PC\Source\Repos\teli_dei\ansitoutf8\bin\Debug\ansiToUTF8.dll /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FUC:\Users\PC\Source\Repos\teli_dei\NetWork\bin\Debug\NetWork.dll /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.Formatters.Soap.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /FUC:\Users\PC\Source\Repos\teli_dei\VersionHelper\bin\Debug\VersionHelper.dll /analyze- /errorReport:prompt /clr:nostdlib stdafx.cpp
+         stdafx.cpp
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files\Windows Kits\8.0\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\teli_dei.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FUC:\Users\PC\Source\Repos\teli_dei\ansitoutf8\bin\Debug\ansiToUTF8.dll /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /FUC:\Users\PC\Source\Repos\teli_dei\NetWork\bin\Debug\NetWork.dll /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Runtime.Serialization.Formatters.Soap.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /FUC:\Users\PC\Source\Repos\teli_dei\VersionHelper\bin\Debug\VersionHelper.dll /analyze- /errorReport:prompt /clr:nostdlib AboutForm.cpp AssemblyInfo.cpp Dei.cpp Form1.cpp MassProccessForm.cpp MassProccessSearchForm.cpp Settings.cpp teli_dei.cpp
+         AboutForm.cpp
+         AssemblyInfo.cpp
+         Dei.cpp
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(51): warning C4677: 'Data': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(91): warning C4677: 'Changes': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(112): warning C4677: 'Input': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(114): warning C4677: 'get': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(135): warning C4677: 'UpdateInputRecord': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>Dei.cpp(190): warning C4101: 'pe' : unreferenced local variable
+     1>Dei.cpp(244): warning C4101: 'pe' : unreferenced local variable
+         Form1.cpp
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(51): warning C4677: 'Data': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(91): warning C4677: 'Changes': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(112): warning C4677: 'Input': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(114): warning C4677: 'get': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(135): warning C4677: 'UpdateInputRecord': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(66): warning C4101: 'VH' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(969): warning C4244: 'initializing' : conversion from '__int64' to 'long', possible loss of data
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1278): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1384): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1491): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1557): warning C4390: ';' : empty controlled statement found; is this the intent?
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1696): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1933): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1999): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(2244): warning C4101: 'ex' : unreferenced local variable
+         MassProccessForm.cpp
+         MassProccessSearchForm.cpp
+         Settings.cpp
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(51): warning C4677: 'Data': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(91): warning C4677: 'Changes': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(112): warning C4677: 'Input': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(114): warning C4677: 'get': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(135): warning C4677: 'UpdateInputRecord': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+         teli_dei.cpp
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(51): warning C4677: 'Data': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(91): warning C4677: 'Changes': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(112): warning C4677: 'Input': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(114): warning C4677: 'get': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Dei.h(135): warning C4677: 'UpdateInputRecord': signature of non-private member contains assembly private type 'InputData'
+                 c:\users\pc\source\repos\teli_dei\teli_dei\Data.h(43) : see declaration of 'InputData'
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(66): warning C4101: 'VH' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(969): warning C4244: 'initializing' : conversion from '__int64' to 'long', possible loss of data
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1278): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1384): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1491): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1557): warning C4390: ';' : empty controlled statement found; is this the intent?
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1696): warning C4101: 'pe' : unreferenced local variable
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1933): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(1999): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+     1>c:\users\pc\source\repos\teli_dei\teli_dei\Form1.h(2244): warning C4101: 'ex' : unreferenced local variable
+         Generating Code...
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /analyze- /errorReport:prompt "C:\Users\PC\AppData\Local\Temp\.NETFramework,Version=v4.0.AssemblyAttributes.cpp"
+         .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+       ResourceCompile:
+         C:\Program Files\Microsoft SDKs\Windows\v7.1A\bin\rc.exe /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\app.res" app.rc 
+       Link:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PC\Source\Repos\teli_dei\Debug\teli_dei.exe" /VERSION:"4.1" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\teli_dei.AboutForm.resources /ASSEMBLYRESOURCE:Debug\teli_dei.Form1.resources /ASSEMBLYRESOURCE:Debug\teli_dei.MassProccessForm.resources /ASSEMBLYRESOURCE:Debug\teli_dei.MassProccessSearchForm.resources /ASSEMBLYRESOURCE:Debug\teli_dei.Settings.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\PC\Source\Repos\teli_dei\Debug\teli_dei.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH Debug\app.res
+         Debug\AboutForm.obj
+         Debug\AssemblyInfo.obj
+         Debug\Dei.obj
+         Debug\Form1.obj
+         Debug\MassProccessForm.obj
+         Debug\MassProccessSearchForm.obj
+         Debug\Settings.obj
+         Debug\stdafx.obj
+         Debug\teli_dei.obj
+         "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         teli_dei.vcxproj -> C:\Users\PC\Source\Repos\teli_dei\Debug\teli_dei.exe
+     1>Done Building Project "C:\Users\PC\Source\Repos\teli_dei\teli_dei\teli_dei.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.43

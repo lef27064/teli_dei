@@ -1,0 +1,4 @@
+C:\Users\PC\Source\Repos\teli_dei\VersionHelper\bin\Debug\VersionHelper.dll
+C:\Users\PC\Source\Repos\teli_dei\VersionHelper\bin\Debug\VersionHelper.pdb
+C:\Users\PC\Source\Repos\teli_dei\VersionHelper\obj\Debug\VersionHelper.dll
+C:\Users\PC\Source\Repos\teli_dei\VersionHelper\obj\Debug\VersionHelper.pdb

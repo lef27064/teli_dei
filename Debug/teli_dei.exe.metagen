@@ -1,0 +1,114 @@
+  teli_dei.AboutForm.resources - Embedded, ContainedInManifestFile, 
+  teli_dei.Form1.resources - Embedded, ContainedInManifestFile, 
+  teli_dei.MassProccessForm.resources - Embedded, ContainedInManifestFile, 
+  teli_dei.MassProccessSearchForm.resources - Embedded, ContainedInManifestFile, 
+  teli_dei.Settings.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly teli_dei, Version=4.6.*, Culture=Invariant Language (Invariant Country): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly ansiToUTF8, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly NetWork, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Runtime.Serialization.Formatters.Soap, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly VersionHelper, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
+	hash=None, flags=None
+Assembly System.Messaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Class teli_dei.AboutForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SavedDataStruct: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Collections.Generic.List`1[InputData] Data : Public
+Class SettingsStruct: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+    Void .ctor(System.String, System.String, System.String, System.String, Int32, System.String, System.String, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Region : Public
+    System.String Municipality : Public
+    System.String UserName : Public
+    System.String Telephone : Public
+    Int32 MaxRecords : Public
+    System.String Server : Public
+    System.String ServerDatabase : Public
+    System.String ServerUserName : Public
+    System.String ServerPassword : Public
+Class ClassDei: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    InputData[] Changes : Public
+    SettingsStruct Settings : Public
+    SavedDataStruct SavedData : Public
+  Properties:
+    InputData[] Input 'get ' : 
+    Int32 size 'get ' : 
+    Int32 TotalOutputRecords 'get ' : 
+    Int32 TotalInputRecords 'get ' : 
+  Methods:
+    get_TotalInputRecords(): PrivateScope, Public, HideBySig, SpecialName
+    get_TotalOutputRecords(): PrivateScope, Public, HideBySig, SpecialName
+    get_size(): PrivateScope, Public, HideBySig, SpecialName
+    get_Input(): PrivateScope, Public, HideBySig, SpecialName
+    ReadFromFile(String): PrivateScope, Public, HideBySig
+    SaveToFile(String): PrivateScope, Public, HideBySig
+    AddChangesRecord(Int32): PrivateScope, Public, HideBySig
+    RemoveChangesRecord(Int32): PrivateScope, Public, HideBySig
+    ClearData(): PrivateScope, Public, HideBySig
+    ReadFromBinaryData(): PrivateScope, Public, HideBySig
+    SaveToBinaryData(): PrivateScope, Public, HideBySig
+    UpdateTotalInputRecords(Int32): PrivateScope, Public, HideBySig
+    UpdateInputRecord(Int32, InputData): PrivateScope, Public, HideBySig
+    ReadSettings(): PrivateScope, Public, HideBySig
+    ReadSettings(String): PrivateScope, Public, HideBySig
+    ReadSettings(ClassDei): PrivateScope, Public, HideBySig
+    ReadSettings(ClassDei, String): PrivateScope, Public, HideBySig
+    SaveSettings(): PrivateScope, Public, HideBySig
+    SaveSettings(SettingsStruct): PrivateScope, Public, HideBySig
+    SaveSettings(SettingsStruct, String): PrivateScope, Public, HideBySig
+    UpdateSettings(): PrivateScope, Public, HideBySig
+    DefaultSettings(): PrivateScope, Public, HideBySig
+    DefaultSettings(String, String, String, String, Int32, String, String, String, String): PrivateScope, Public, HideBySig
+    ReadData(): PrivateScope, Public, HideBySig
+    ReadData(ClassDei): PrivateScope, Public, HideBySig
+    ReadData(ClassDei, String): PrivateScope, Public, HideBySig
+    SaveData(): PrivateScope, Public, HideBySig
+    SaveData(ClassDei): PrivateScope, Public, HideBySig
+    SaveData(ClassDei, String): PrivateScope, Public, HideBySig
+Class teli_dei.Settings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(ClassDei): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class teli_dei.MassProccessForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(Int32*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String ZoneCode : Public
+Class teli_dei.MassProccessSearchForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(Int32, System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String diamerisma : Public
+    Int32 Result : Public
+    System.String ZoneCode : Public
+Class teli_dei.Form1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    ClassDei dei : Public
