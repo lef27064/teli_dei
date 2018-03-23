@@ -78,6 +78,7 @@
     </None>
     <None Include="ReadMe.txt" />
     <None Include="teli_dei.licenseheader" />
+    <None Include="CreateDataBase.sql" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">

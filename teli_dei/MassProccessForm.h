@@ -43,6 +43,8 @@ namespace teli_dei{
 	public ref class MassProccessForm : public System::Windows::Forms::Form
 	{
 	public:
+		public:String^ ZoneCode;
+
 		MassProccessForm(int* Result)
 		{
 			
@@ -72,6 +74,9 @@ namespace teli_dei{
 
 
 	private: int* Result;
+	
+	private: System::Windows::Forms::CheckBox^  checkBoxZoneCode;
+	private: System::Windows::Forms::TextBox^  textBoxCodeZone;
 
 
 	private:
@@ -91,6 +96,8 @@ namespace teli_dei{
 			this->MassProccessListBox = (gcnew System::Windows::Forms::CheckedListBox());
 			this->okbutton = (gcnew System::Windows::Forms::Button());
 			this->Cancelbutton = (gcnew System::Windows::Forms::Button());
+			this->checkBoxZoneCode = (gcnew System::Windows::Forms::CheckBox());
+			this->textBoxCodeZone = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -111,7 +118,7 @@ namespace teli_dei{
 				L"Δημοτικά Τέλη = Δημοτικός Φόρος = ΤΑΠ (Δημοτικά Τέλη)"});
 			this->MassProccessListBox->Location = System::Drawing::Point(24, 86);
 			this->MassProccessListBox->Name = L"MassProccessListBox";
-			this->MassProccessListBox->Size = System::Drawing::Size(477, 109);
+			this->MassProccessListBox->Size = System::Drawing::Size(477, 94);
 			this->MassProccessListBox->TabIndex = 3;
 			// 
 			// okbutton
@@ -136,11 +143,30 @@ namespace teli_dei{
 			this->Cancelbutton->UseVisualStyleBackColor = true;
 			this->Cancelbutton->Click += gcnew System::EventHandler(this, &MassProccessForm::Cancelbutton_Click);
 			// 
+			// checkBoxZoneCode
+			// 
+			this->checkBoxZoneCode->AutoSize = true;
+			this->checkBoxZoneCode->Location = System::Drawing::Point(24, 198);
+			this->checkBoxZoneCode->Name = L"checkBoxZoneCode";
+			this->checkBoxZoneCode->Size = System::Drawing::Size(156, 17);
+			this->checkBoxZoneCode->TabIndex = 6;
+			this->checkBoxZoneCode->Text = L"Θέσε κωδικό ζώνης ισο με";
+			this->checkBoxZoneCode->UseVisualStyleBackColor = true;
+			// 
+			// textBoxCodeZone
+			// 
+			this->textBoxCodeZone->Location = System::Drawing::Point(229, 195);
+			this->textBoxCodeZone->Name = L"textBoxCodeZone";
+			this->textBoxCodeZone->Size = System::Drawing::Size(105, 20);
+			this->textBoxCodeZone->TabIndex = 7;
+			// 
 			// MassProccessForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(531, 361);
+			this->ClientSize = System::Drawing::Size(578, 361);
+			this->Controls->Add(this->textBoxCodeZone);
+			this->Controls->Add(this->checkBoxZoneCode);
 			this->Controls->Add(this->Cancelbutton);
 			this->Controls->Add(this->okbutton);
 			this->Controls->Add(this->MassProccessListBox);
@@ -164,6 +190,11 @@ namespace teli_dei{
 				 *Result=1000+*Result;
 				 if (this->MassProccessListBox->GetItemChecked(4))
 				 *Result=10000+*Result;
+				 if (this->checkBoxZoneCode->Checked)
+				 {
+					 *Result=100000+*Result;
+					 ZoneCode =textBoxCodeZone->Text;
+				 }
 				 this->Close();
 			 }
 private: System::Void Cancelbutton_Click(System::Object^  sender, System::EventArgs^  e) {

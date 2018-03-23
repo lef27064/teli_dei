@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.ico" />
+    <None Include="CreateDataBase.sql" />
     <None Include="ReadMe.txt" />
     <None Include="teli_dei.licenseheader" />
   </ItemGroup>
@@ -182,6 +183,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ansitoutf8\ansiToUTF8.csproj">
       <Project>{3716d2c6-7204-4842-9988-c5f919b7ad5b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\NetWork\NetWork.vbproj">
+      <Project>{21d51405-2335-4033-bc16-80cf7601bd64}</Project>
     </ProjectReference>
     <ProjectReference Include="..\VersionHelper\VersionHelper.csproj">
       <Project>{6fead9b9-115f-4722-b53c-65da8f4cb6cb}</Project>

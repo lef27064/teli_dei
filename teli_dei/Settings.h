@@ -49,8 +49,12 @@ namespace teli_dei{
 	public ref class Settings : public System::Windows::Forms::Form
 	{
 	public:
-		Settings(void)
+		Settings(ClassDei^ iSettingsdei)
 		{
+			
+			Settingsdei = iSettingsdei;
+					
+
 			InitializeComponent();
 			ReadValuesFromFile();
 			//
@@ -73,7 +77,7 @@ namespace teli_dei{
 	private: System::Windows::Forms::TextBox^  textBoxUserName;
 	protected: 
 
-	protected: 
+	protected: ClassDei^ Settingsdei;
 
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
@@ -86,6 +90,20 @@ namespace teli_dei{
 	private: System::Windows::Forms::TextBox^  textBoxTelephone;
 	private: System::Windows::Forms::Label^  labelMaxRecords;
 	private: System::Windows::Forms::TextBox^  textBoxMaxRecords;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::GroupBox^  groupBox2;
+	private: System::Windows::Forms::TextBox^  textBoxServerPassword;
+
+	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::TextBox^  textBoxServerDatabase;
+	private: System::Windows::Forms::TextBox^  textBoxServerUserName;
+
+
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::Label^  label6;
+	private: System::Windows::Forms::TextBox^  textBoxServer;
+
 
 	private:
 		/// <summary>
@@ -112,18 +130,30 @@ namespace teli_dei{
 			this->textBoxTelephone = (gcnew System::Windows::Forms::TextBox());
 			this->labelMaxRecords = (gcnew System::Windows::Forms::Label());
 			this->textBoxMaxRecords = (gcnew System::Windows::Forms::TextBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBoxServerPassword = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBoxServerDatabase = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxServerUserName = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBoxServer = (gcnew System::Windows::Forms::TextBox());
+			this->groupBox1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// textBoxMunicipality
 			// 
-			this->textBoxMunicipality->Location = System::Drawing::Point(185, 54);
+			this->textBoxMunicipality->Location = System::Drawing::Point(192, 73);
 			this->textBoxMunicipality->Name = L"textBoxMunicipality";
 			this->textBoxMunicipality->Size = System::Drawing::Size(193, 20);
 			this->textBoxMunicipality->TabIndex = 0;
 			// 
 			// textBoxUserName
 			// 
-			this->textBoxUserName->Location = System::Drawing::Point(185, 96);
+			this->textBoxUserName->Location = System::Drawing::Point(192, 115);
 			this->textBoxUserName->Name = L"textBoxUserName";
 			this->textBoxUserName->Size = System::Drawing::Size(193, 20);
 			this->textBoxUserName->TabIndex = 1;
@@ -131,7 +161,7 @@ namespace teli_dei{
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 61);
+			this->label1->Location = System::Drawing::Point(19, 80);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(38, 13);
 			this->label1->TabIndex = 2;
@@ -140,7 +170,7 @@ namespace teli_dei{
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 103);
+			this->label2->Location = System::Drawing::Point(19, 122);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(135, 13);
 			this->label2->TabIndex = 3;
@@ -148,9 +178,9 @@ namespace teli_dei{
 			// 
 			// buttonCancel
 			// 
-			this->buttonCancel->Location = System::Drawing::Point(294, 203);
+			this->buttonCancel->Location = System::Drawing::Point(662, 339);
 			this->buttonCancel->Name = L"buttonCancel";
-			this->buttonCancel->Size = System::Drawing::Size(84, 33);
+			this->buttonCancel->Size = System::Drawing::Size(191, 65);
 			this->buttonCancel->TabIndex = 5;
 			this->buttonCancel->Text = L"Ακύρωση";
 			this->buttonCancel->UseVisualStyleBackColor = true;
@@ -158,9 +188,9 @@ namespace teli_dei{
 			// 
 			// buttonSave
 			// 
-			this->buttonSave->Location = System::Drawing::Point(64, 203);
+			this->buttonSave->Location = System::Drawing::Point(95, 339);
 			this->buttonSave->Name = L"buttonSave";
-			this->buttonSave->Size = System::Drawing::Size(83, 33);
+			this->buttonSave->Size = System::Drawing::Size(154, 65);
 			this->buttonSave->TabIndex = 6;
 			this->buttonSave->Text = L"Αποθήκευση";
 			this->buttonSave->UseVisualStyleBackColor = true;
@@ -169,7 +199,7 @@ namespace teli_dei{
 			// labelRegion
 			// 
 			this->labelRegion->AutoSize = true;
-			this->labelRegion->Location = System::Drawing::Point(12, 21);
+			this->labelRegion->Location = System::Drawing::Point(19, 40);
 			this->labelRegion->Name = L"labelRegion";
 			this->labelRegion->Size = System::Drawing::Size(38, 13);
 			this->labelRegion->TabIndex = 8;
@@ -177,7 +207,7 @@ namespace teli_dei{
 			// 
 			// textBoxRegion
 			// 
-			this->textBoxRegion->Location = System::Drawing::Point(185, 14);
+			this->textBoxRegion->Location = System::Drawing::Point(192, 33);
 			this->textBoxRegion->Name = L"textBoxRegion";
 			this->textBoxRegion->Size = System::Drawing::Size(193, 20);
 			this->textBoxRegion->TabIndex = 7;
@@ -185,7 +215,7 @@ namespace teli_dei{
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 137);
+			this->label3->Location = System::Drawing::Point(19, 156);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(92, 13);
 			this->label3->TabIndex = 10;
@@ -193,7 +223,7 @@ namespace teli_dei{
 			// 
 			// textBoxTelephone
 			// 
-			this->textBoxTelephone->Location = System::Drawing::Point(185, 130);
+			this->textBoxTelephone->Location = System::Drawing::Point(192, 149);
 			this->textBoxTelephone->Name = L"textBoxTelephone";
 			this->textBoxTelephone->Size = System::Drawing::Size(193, 20);
 			this->textBoxTelephone->TabIndex = 9;
@@ -201,7 +231,7 @@ namespace teli_dei{
 			// labelMaxRecords
 			// 
 			this->labelMaxRecords->AutoSize = true;
-			this->labelMaxRecords->Location = System::Drawing::Point(12, 171);
+			this->labelMaxRecords->Location = System::Drawing::Point(35, 264);
 			this->labelMaxRecords->Name = L"labelMaxRecords";
 			this->labelMaxRecords->Size = System::Drawing::Size(143, 13);
 			this->labelMaxRecords->TabIndex = 12;
@@ -209,32 +239,128 @@ namespace teli_dei{
 			// 
 			// textBoxMaxRecords
 			// 
-			this->textBoxMaxRecords->Location = System::Drawing::Point(185, 164);
+			this->textBoxMaxRecords->Location = System::Drawing::Point(208, 257);
 			this->textBoxMaxRecords->Name = L"textBoxMaxRecords";
 			this->textBoxMaxRecords->Size = System::Drawing::Size(193, 20);
 			this->textBoxMaxRecords->TabIndex = 11;
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->textBoxMunicipality);
+			this->groupBox1->Controls->Add(this->textBoxUserName);
+			this->groupBox1->Controls->Add(this->label1);
+			this->groupBox1->Controls->Add(this->textBoxTelephone);
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->labelRegion);
+			this->groupBox1->Controls->Add(this->textBoxRegion);
+			this->groupBox1->Location = System::Drawing::Point(16, 12);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(413, 203);
+			this->groupBox1->TabIndex = 13;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Γενικά Στοιχεία";
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->textBoxServerPassword);
+			this->groupBox2->Controls->Add(this->label7);
+			this->groupBox2->Controls->Add(this->textBoxServerDatabase);
+			this->groupBox2->Controls->Add(this->textBoxServerUserName);
+			this->groupBox2->Controls->Add(this->label4);
+			this->groupBox2->Controls->Add(this->label5);
+			this->groupBox2->Controls->Add(this->label6);
+			this->groupBox2->Controls->Add(this->textBoxServer);
+			this->groupBox2->Location = System::Drawing::Point(452, 30);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(401, 227);
+			this->groupBox2->TabIndex = 14;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Βάση Δεδομένων";
+			// 
+			// textBoxServerPassword
+			// 
+			this->textBoxServerPassword->Location = System::Drawing::Point(171, 165);
+			this->textBoxServerPassword->Name = L"textBoxServerPassword";
+			this->textBoxServerPassword->Size = System::Drawing::Size(193, 20);
+			this->textBoxServerPassword->TabIndex = 15;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(-2, 172);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(53, 13);
+			this->label7->TabIndex = 16;
+			this->label7->Text = L"Password";
+			// 
+			// textBoxServerDatabase
+			// 
+			this->textBoxServerDatabase->Location = System::Drawing::Point(171, 81);
+			this->textBoxServerDatabase->Name = L"textBoxServerDatabase";
+			this->textBoxServerDatabase->Size = System::Drawing::Size(193, 20);
+			this->textBoxServerDatabase->TabIndex = 9;
+			// 
+			// textBoxServerUserName
+			// 
+			this->textBoxServerUserName->Location = System::Drawing::Point(171, 123);
+			this->textBoxServerUserName->Name = L"textBoxServerUserName";
+			this->textBoxServerUserName->Size = System::Drawing::Size(193, 20);
+			this->textBoxServerUserName->TabIndex = 10;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(-2, 88);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(74, 13);
+			this->label4->TabIndex = 11;
+			this->label4->Text = L"Ονομα Βάσης";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(-2, 130);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(58, 13);
+			this->label5->TabIndex = 12;
+			this->label5->Text = L"User name";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(-2, 48);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(38, 13);
+			this->label6->TabIndex = 14;
+			this->label6->Text = L"Server";
+			// 
+			// textBoxServer
+			// 
+			this->textBoxServer->Location = System::Drawing::Point(171, 41);
+			this->textBoxServer->Name = L"textBoxServer";
+			this->textBoxServer->Size = System::Drawing::Size(193, 20);
+			this->textBoxServer->TabIndex = 13;
 			// 
 			// Settings
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(451, 248);
+			this->ClientSize = System::Drawing::Size(928, 508);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->labelMaxRecords);
 			this->Controls->Add(this->textBoxMaxRecords);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->textBoxTelephone);
-			this->Controls->Add(this->labelRegion);
-			this->Controls->Add(this->textBoxRegion);
 			this->Controls->Add(this->buttonSave);
 			this->Controls->Add(this->buttonCancel);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBoxUserName);
-			this->Controls->Add(this->textBoxMunicipality);
 			this->MaximizeBox = false;
 			this->MinimizeBox = false;
 			this->Name = L"Settings";
 			this->Text = L"Ρυθμίσεις";
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -242,46 +368,36 @@ namespace teli_dei{
 #pragma endregion
 	private: System::Void buttonSave_Click(System::Object^  sender, System::EventArgs^  e) {
 								
-				ClassDei^ dei;
-				dei = gcnew ClassDei(0);
-				dei->Settings->Region=this->textBoxRegion->Text;
-				dei->Settings->Municipality=this->textBoxMunicipality->Text;
-				dei->Settings->UserName =this->textBoxUserName->Text;
-				dei->Settings->Telephone=this->textBoxTelephone->Text;
-				dei->Settings->MaxRecords=Convert::ToInt32(this->textBoxMaxRecords->Text);
+				
+				Settingsdei->Settings->Region=this->textBoxRegion->Text;
+				Settingsdei->Settings->Municipality=this->textBoxMunicipality->Text;
+				Settingsdei->Settings->UserName =this->textBoxUserName->Text;
+				Settingsdei->Settings->Telephone=this->textBoxTelephone->Text;
+				Settingsdei->Settings->MaxRecords=Convert::ToInt32(this->textBoxMaxRecords->Text);
+				Settingsdei->Settings->Server =this->textBoxServer->Text;
+				Settingsdei->Settings->ServerDatabase=this->textBoxServerDatabase->Text;
+				Settingsdei->Settings->ServerPassword=this->textBoxServerPassword->Text;
+				Settingsdei->Settings->ServerUserName=this->textBoxServerUserName->Text;
 
-				dei->UpdateSettings();
+				Settingsdei->UpdateSettings();
 			
 			}
 	
 	private: void ReadValuesFromFile(void)
 			 {
-				ClassDei^ Settingsdei;
-				Settingsdei = gcnew ClassDei(0);
+								
 				Settingsdei->ReadSettings();
-
-
-				String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
-				String ^ path = Path::Combine(appDataDir, L"TeliDei");
-				if (!Directory::Exists(path))
-				{
-					Directory::CreateDirectory(path);
-				}
-
-					 XmlSerializer^ serializer = gcnew XmlSerializer( ClassDei::typeid );
-				   // A FileStream is needed to read the XML document.
-					FileStream^ fs = gcnew FileStream( path+"\\settings.xml",FileMode::Open );
- 
-				  /* Use the Deserialize method to restore the object's state with data from the XML document. */
-					Settingsdei = dynamic_cast<ClassDei^>(serializer->Deserialize( fs ));
-					fs->Close();
-			
+							
 				this->textBoxRegion->Text=Settingsdei->Settings->Region;
 				this->textBoxMunicipality->Text=Settingsdei->Settings->Municipality;
 				this->textBoxUserName->Text=Settingsdei->Settings->UserName;
 				this->textBoxTelephone->Text=Settingsdei->Settings->Telephone;
 				this->textBoxMaxRecords->Text = Settingsdei->Settings->MaxRecords.ToString();
 
+				this->textBoxServer->Text= Settingsdei->Settings->Server;
+				this->textBoxServerDatabase->Text=Settingsdei->Settings->ServerDatabase;
+				this->textBoxServerPassword->Text=Settingsdei->Settings->ServerPassword;
+				this->textBoxServerUserName->Text=Settingsdei->Settings->ServerUserName;
 				
 			 }
 

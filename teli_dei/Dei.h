@@ -50,8 +50,8 @@ public ref class SavedDataStruct
 public:
    List<InputData>^ Data;
    /////
-   SavedDataStruct();
-   SavedDataStruct(int isize);
+   SavedDataStruct();            //initialize
+   SavedDataStruct(int isize);	 //initialize
 };
 
 
@@ -59,23 +59,28 @@ public:
 public ref class SettingsStruct
 {
 public:
-    System::String^ Region;
-	System::String^ Municipality;
-	System::String^ UserName;
-	System::String^ Telephone;
+    System::String^ Region;       //Περιοχή
+	System::String^ Municipality; //Δήμος
+	System::String^ UserName;	  //Ονομα χρήστη (για τις αναφορές)	
+	System::String^ Telephone;	  //Τηλέφωνο χρήστη (τηλέφωνο του χρήστη για τις αναφορές)	
 	int MaxRecords;
+	System::String^ Server;			//Διακομιστής βάσης δεδομένων
+	System::String^ ServerDatabase;	//Ονομα Βάσης
+	System::String^ ServerUserName;	//Username	
+	System::String^ ServerPassword;	//Password	
 	////////
-	SettingsStruct();
-	SettingsStruct(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords);
+	SettingsStruct();			 //	initialize
+	SettingsStruct(int iMaxRecords);
+	SettingsStruct(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords,System::String^ Server,System::String^ ServerDatabase,System::String^ ServerUserName, System::String^ ServerPassword );   // initialize
 };
 
 public ref class ClassDei
 {
 private: 
-	   array<InputData,1>^  _Input ;      
-	   array<OutputData,1>^  Output;
+	   array<InputData,1>^  _Input ;      //Πίνακας 
+	   array<OutputData,1>^  Output;	 //	Πίνακας
 	   
-	   int _TotalInputRecords;
+	   int _TotalInputRecords;			
 	   int _TotalChangedRecords;
 	   int _size;
 	   System::String^ checkencoding(System::String^ FileName);
@@ -128,6 +133,7 @@ public:
 	void SaveToBinaryData(void);
 	void UpdateTotalInputRecords(int UpdateValue);
 	void UpdateInputRecord(int which, InputData inputRec);
+	
 	//Settings
 	void ReadSettings(ClassDei^ SettingsDei,String^ FileName);
 	void ReadSettings(ClassDei^ SettingsDei);
@@ -139,8 +145,10 @@ public:
 	void SaveSettings(void);
 
 	void UpdateSettings(void);
-	void DefaultSettings(String^ Region, String^ Municipality, String^ UserName, String^ Telephone, int MaxRecords);
+	void DefaultSettings(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords, System::String^ iServer,System::String^ iServerDatabase,System::String^ iServerUserName, System::String^ iServerPassword);
+
 	void DefaultSettings();
+	
 	//Data
 	void ReadData(ClassDei^ DataDei, String^ FileName);
 	void ReadData(ClassDei^ DataDei);

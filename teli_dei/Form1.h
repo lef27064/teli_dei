@@ -34,23 +34,23 @@
 #include "MassProccessForm.h"
 #include "MassProccessSearchForm.h"
 #include "AboutForm.h"
+
+
 namespace teli_dei {
+	
 	using namespace System;
 	using namespace System::IO;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
+	using namespace System::Data::SqlClient;
 	using namespace System::Drawing;
 	using namespace System::Diagnostics;
 	using namespace System::Xml;
 	using namespace System::Xml::Serialization;
 	using namespace System::Runtime::Serialization::Formatters::Binary;
 	
-
-
-
-//	using namespace System::Drawing;
 
 	/// <summary>
 	/// Η φόρμα αυτή είναι η βασική φόρμα μεταβολών
@@ -77,6 +77,12 @@ namespace teli_dei {
 			String ^ appDataDir = Environment::GetFolderPath(Environment::SpecialFolder::ApplicationData);
 			String ^ path = Path::Combine(appDataDir, L"TeliDei");
 			XmlSerializer^ serializer = gcnew XmlSerializer(ClassDei::typeid );
+///*********
+///			Bootstrap	
+			
+//			dei = gcnew ClassDei(20000);				//Δημιουργεία του Directory telidei
+//			dei->SaveSettings();
+///*********
 
 			//Υπάρχει το Directory?
 			if (!Directory::Exists(path))
@@ -102,7 +108,7 @@ namespace teli_dei {
 
 				deiSettings->ReadSettings(deiSettings,"settings.xml");
 			
-								
+							
 				
 				dei = gcnew ClassDei(deiSettings->Settings->MaxRecords);
 				delete deiSettings;
@@ -141,7 +147,8 @@ namespace teli_dei {
 	private: System::Windows::Forms::Button^  TransferButton;
 
 	public:  ClassDei^ dei;
-
+	private: SqlDataAdapter^ adap;
+	private: DataSet^ ds;
 
 	private: System::Windows::Forms::DataGridView^  ChangedGridView;
 	private: System::Windows::Forms::DataGridView^  OutputGridView;
@@ -216,6 +223,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^  cOnomasiaDimou;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^  cKodikosDimou;
 private: System::Windows::Forms::FlowLayoutPanel^  flowLayoutPanel1;
 private: System::Windows::Forms::Button^  AboutButton;
+private: System::Windows::Forms::Button^  buttonReadfromSqlServer;
+private: System::Windows::Forms::Button^  buttonSavetoSqlServer;
 
 
 
@@ -360,6 +369,8 @@ private: System::Windows::Forms::Button^  AboutButton;
 			this->cKodikosDimou = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->AboutButton = (gcnew System::Windows::Forms::Button());
+			this->buttonReadfromSqlServer = (gcnew System::Windows::Forms::Button());
+			this->buttonSavetoSqlServer = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->ChangedGridView))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->InputDataGrid))->BeginInit();
@@ -369,7 +380,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			// 
 			this->ReadFromFileButton->Location = System::Drawing::Point(12, 297);
 			this->ReadFromFileButton->Name = L"ReadFromFileButton";
-			this->ReadFromFileButton->Size = System::Drawing::Size(144, 55);
+			this->ReadFromFileButton->Size = System::Drawing::Size(107, 55);
 			this->ReadFromFileButton->TabIndex = 0;
 			this->ReadFromFileButton->Text = L"Ανάγνωση από πρωτότυπο αρχείο ΔΕΗ";
 			this->ReadFromFileButton->UseCompatibleTextRendering = true;
@@ -379,7 +390,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			// TransferButton
 			// 
 			this->TransferButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.25F));
-			this->TransferButton->Location = System::Drawing::Point(1025, 299);
+			this->TransferButton->Location = System::Drawing::Point(1120, 299);
 			this->TransferButton->Name = L"TransferButton";
 			this->TransferButton->Size = System::Drawing::Size(85, 63);
 			this->TransferButton->TabIndex = 3;
@@ -593,7 +604,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			// MakeReportButton
 			// 
 			this->MakeReportButton->Enabled = false;
-			this->MakeReportButton->Location = System::Drawing::Point(790, 601);
+			this->MakeReportButton->Location = System::Drawing::Point(752, 601);
 			this->MakeReportButton->Name = L"MakeReportButton";
 			this->MakeReportButton->Size = System::Drawing::Size(141, 49);
 			this->MakeReportButton->TabIndex = 14;
@@ -685,7 +696,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			this->groupBox1->Controls->Add(this->SearchNamebutton);
 			this->groupBox1->Controls->Add(this->SearchBox);
 			this->groupBox1->Controls->Add(this->textBoxProvider);
-			this->groupBox1->Location = System::Drawing::Point(314, 297);
+			this->groupBox1->Location = System::Drawing::Point(409, 297);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(326, 81);
 			this->groupBox1->TabIndex = 26;
@@ -706,7 +717,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			// MassSearchbutton
 			// 
 			this->MassSearchbutton->Enabled = false;
-			this->MassSearchbutton->Location = System::Drawing::Point(752, 309);
+			this->MassSearchbutton->Location = System::Drawing::Point(847, 309);
 			this->MassSearchbutton->Name = L"MassSearchbutton";
 			this->MassSearchbutton->Size = System::Drawing::Size(146, 48);
 			this->MassSearchbutton->TabIndex = 28;
@@ -728,6 +739,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			this->InputDataGrid->Name = L"InputDataGrid";
 			this->InputDataGrid->Size = System::Drawing::Size(1203, 225);
 			this->InputDataGrid->TabIndex = 7;
+			this->InputDataGrid->ColumnHeaderMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &Form1::InputDataGrid_ColumnHeaderMouseClick);
 			// 
 			// Arithmos
 			// 
@@ -855,7 +867,7 @@ private: System::Windows::Forms::Button^  AboutButton;
 			this->flowLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Top;
 			this->flowLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
-			this->flowLayoutPanel1->Size = System::Drawing::Size(1210, 0);
+			this->flowLayoutPanel1->Size = System::Drawing::Size(1279, 0);
 			this->flowLayoutPanel1->TabIndex = 29;
 			// 
 			// AboutButton
@@ -868,12 +880,36 @@ private: System::Windows::Forms::Button^  AboutButton;
 			this->AboutButton->UseVisualStyleBackColor = true;
 			this->AboutButton->Click += gcnew System::EventHandler(this, &Form1::AboutButton_Click);
 			// 
+			// buttonReadfromSqlServer
+			// 
+			this->buttonReadfromSqlServer->Location = System::Drawing::Point(145, 297);
+			this->buttonReadfromSqlServer->Name = L"buttonReadfromSqlServer";
+			this->buttonReadfromSqlServer->Size = System::Drawing::Size(107, 55);
+			this->buttonReadfromSqlServer->TabIndex = 31;
+			this->buttonReadfromSqlServer->Text = L"Ανάγνωση απο SqlServer";
+			this->buttonReadfromSqlServer->UseCompatibleTextRendering = true;
+			this->buttonReadfromSqlServer->UseVisualStyleBackColor = true;
+			this->buttonReadfromSqlServer->Click += gcnew System::EventHandler(this, &Form1::buttonReadfromSqlServer_Click);
+			// 
+			// buttonSavetoSqlServer
+			// 
+			this->buttonSavetoSqlServer->Location = System::Drawing::Point(278, 296);
+			this->buttonSavetoSqlServer->Name = L"buttonSavetoSqlServer";
+			this->buttonSavetoSqlServer->Size = System::Drawing::Size(107, 55);
+			this->buttonSavetoSqlServer->TabIndex = 32;
+			this->buttonSavetoSqlServer->Text = L"Αποθήκευση σε SqlServer";
+			this->buttonSavetoSqlServer->UseCompatibleTextRendering = true;
+			this->buttonSavetoSqlServer->UseVisualStyleBackColor = true;
+			this->buttonSavetoSqlServer->Click += gcnew System::EventHandler(this, &Form1::buttonSavetoSqlServer_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
-			this->ClientSize = System::Drawing::Size(1210, 674);
+			this->ClientSize = System::Drawing::Size(1279, 674);
+			this->Controls->Add(this->buttonSavetoSqlServer);
+			this->Controls->Add(this->buttonReadfromSqlServer);
 			this->Controls->Add(this->AboutButton);
 			this->Controls->Add(this->InputDataGrid);
 			this->Controls->Add(this->MassSearchbutton);
@@ -1042,6 +1078,36 @@ private: void UpdateInputGrid()
 				this->InputDataGrid->Rows[i-1]->Cells[17]->Value=dei->Input[i].KodikosZonisTap;
 				this->InputDataGrid->Rows[i-1]->Cells[18]->Value=dei->Input[i].OnomasiaDimou;
 				this->InputDataGrid->Rows[i-1]->Cells[19]->Value=dei->Input[i].KodikosDimou;
+
+					 }
+
+		 }
+		 
+private: void UpdateDataFromGrid()
+		 {
+			 int i;
+			 for (i=1;i<dei->TotalInputRecords;i++)
+			 {
+				 dei->Input[i].AfxonArithmos=Convert::ToInt32(this->InputDataGrid->Rows[i-1]->Cells[0]->Value->ToString());			 
+				 dei->Input[i].Paroxi=	this->InputDataGrid->Rows[i-1]->Cells[1]->Value->ToString();
+				 dei->Input[i].Onomateponimo=this->InputDataGrid->Rows[i-1]->Cells[2]->Value->ToString();
+				 dei->Input[i].Odos=this->InputDataGrid->Rows[i-1]->Cells[3]->Value->ToString();
+				 dei->Input[i].Arithmos=this->InputDataGrid->Rows[i-1]->Cells[4]->Value->ToString();
+				 dei->Input[i].Poli=this->InputDataGrid->Rows[i-1]->Cells[5]->Value->ToString();
+				 dei->Input[i].TaxKodikas=this->InputDataGrid->Rows[i-1]->Cells[6]->Value->ToString();
+				 dei->Input[i].KodikosDK=this->InputDataGrid->Rows[i-1]->Cells[7]->Value->ToString();
+				 dei->Input[i].KodikosXreosis=this->InputDataGrid->Rows[i-1]->Cells[8]->Value->ToString();
+				 dei->Input[i].KodikosApalagis=this->InputDataGrid->Rows[i-1]->Cells[9]->Value->ToString();
+				 dei->Input[i].TetragonikaMetraDimTelon=this->InputDataGrid->Rows[i-1]->Cells[10]->Value->ToString();
+				 dei->Input[i].TetragonikaMetraDimForou=this->InputDataGrid->Rows[i-1]->Cells[11]->Value->ToString();
+				dei->Input[i].KodikosXreosisTap=this->InputDataGrid->Rows[i-1]->Cells[12]->Value->ToString();
+				dei->Input[i].DiktisXreosisXrisisTap=this->InputDataGrid->Rows[i-1]->Cells[13]->Value->ToString();
+				dei->Input[i].KodikosApalagisTap=this->InputDataGrid->Rows[i-1]->Cells[14]->Value->ToString();
+				dei->Input[i].TetragvnikaMetraTap=this->InputDataGrid->Rows[i-1]->Cells[15]->Value->ToString();
+				dei->Input[i].EtosAdeias=this->InputDataGrid->Rows[i-1]->Cells[16]->Value->ToString();
+				dei->Input[i].KodikosZonisTap=this->InputDataGrid->Rows[i-1]->Cells[17]->Value->ToString();
+				dei->Input[i].OnomasiaDimou=this->InputDataGrid->Rows[i-1]->Cells[18]->Value->ToString();
+				dei->Input[i].KodikosDimou=this->InputDataGrid->Rows[i-1]->Cells[19]->Value->ToString();
 
 					 }
 
@@ -1851,8 +1917,12 @@ private: System::Void buttonPrintReport_Click(System::Object^  sender, System::E
 		 
 		 //Αλλαγή ρυθμίσεων  
 private: System::Void buttonSettings_Click(System::Object^  sender, System::EventArgs^  e) {
-			 Settings^ UserSettings = gcnew Settings;
+
+
+			 Settings^ UserSettings = gcnew Settings(dei);
 			 UserSettings->Show();
+			 dei->ReadSettings();
+		//	 Settings
 		 }
 
 
@@ -1930,18 +2000,35 @@ private: void DTEqualDFEqualTAPEqualMean(void){
 					  }
 		 }
 
+private: void EqualZoneCode(String^ ZoneCode){
+					for (int i=0;i<this->ChangedGridView->Rows->Count;i++)
+					  {
+						 
+						  this->ChangedGridView->Rows[i]->Cells[13]->Value=ZoneCode;
+					  }
+		 }
+
 private: System::Void MassProccessButton_Click(System::Object^  sender, System::EventArgs^  e) {
        
 		if (ChangedGridView->Rows->Count>0)
 		{
 			 MassProccessForm^ ProccessForm= gcnew MassProccessForm(massproccess);
 			 if (ProccessForm->ShowDialog()==System::Windows::Forms::DialogResult::OK)
+             if (*massproccess>=100000)
+			 {
+				 EqualZoneCode(ProccessForm->ZoneCode);
+				*massproccess = *massproccess - 100000;
+			 }
 			 if (*massproccess>=10000)
+			 {
 				 DTEqualDFEqualTAPEqualDT();
-					*massproccess = *massproccess - 10000;
+				*massproccess = *massproccess - 10000;
+			 }
              if (*massproccess>=1000)
+			 {
 				 DTEqualDFEqualTAPEqualMean();
-					*massproccess = *massproccess - 1000;
+				*massproccess = *massproccess - 1000;
+			 }
 		     if (*massproccess>=100)
 				{
 					DTEqualDFEqualTAP();
@@ -2015,9 +2102,13 @@ private: System::Void MassSearchbutton_Click(System::Object^  sender, System::Ev
 			 int i;
 			 for (i=0;i<this->InputDataGrid->RowCount;i++)
 				 {
-					 
-					 if ((this->InputDataGrid->Rows[i]->Cells["cKodikosDK"]->Value->ToString()==diamerisma) && (this->InputDataGrid->Rows[i]->Cells["cCodeZone"]->Value->ToString()==ZoneKode)) 
-					 InputDataGrid->Rows[i]->Selected=true;
+					 if (diamerisma!="")
+					 {
+						 if ((this->InputDataGrid->Rows[i]->Cells["cKodikosDK"]->Value->ToString()==diamerisma) && (this->InputDataGrid->Rows[i]->Cells["cCodeZone"]->Value->ToString()==ZoneKode)) 
+							InputDataGrid->Rows[i]->Selected=true;
+					 }else
+						  if ((this->InputDataGrid->Rows[i]->Cells["cCodeZone"]->Value->ToString()==ZoneKode)) 
+							InputDataGrid->Rows[i]->Selected=true;
 				 }
 		 }
 
@@ -2098,6 +2189,142 @@ private: System::Void AboutButton_Click(System::Object^  sender, System::EventAr
 			 AboutForm^ aAboutForm = gcnew AboutForm();
 			 aAboutForm->ShowDialog();
 
+		 }
+
+
+
+
+private: System::Void buttonReadfromSqlServer_Click(System::Object^  sender, System::EventArgs^  e) {
+			    System::Windows::Forms::DialogResult answer;
+			    
+			    Debug::WriteLine("Try to connect  On Server " + dei->Settings->Server + " with credentials User " + dei->Settings->ServerUserName);
+
+
+                String ^ connectionString = "Persist Security Info=False;Initial Catalog=" + dei->Settings->ServerDatabase + ";Data Source=" + dei->Settings->Server + ";User ID=" + dei->Settings->ServerUserName + ";Password=" + dei->Settings->ServerPassword + "; Connect Timeout = 0";
+                String^  query ="select id as 'Α/Α',Paroxi as 'Αριθμός Παροχής', Onomateponimo as 'Ονοματεπώνυμο',	Odos as 'Οδός',	Arithmos as 'Αριθμός', Poli as 'Πόλη', 	TaxKodikas as 'Τ.Κ.', 	KodikosDK as 'Κωδικός Δ.Κ.', KodikosXreosis as 'Κωδικός Χρέωσης', KodikosApalagis as 'Κωδικός Απαλαγής', TetragonikaMetraDimTelon as 'm2 Δημ. Τελών', TetragonikaMetraDimForou as 'm2 Δημ. Φόρου',	KodikosXreosisTap as 'Κωδικός Χρ. ΤΑΠ',	KodikosZonisTap as 'Κωδ. Ζώνης ΤΑΠ',DiktisXreosisXrisisTap as 'Δείκτης χρ. χρήσης',	KodikosApalagisTap as 'Κωδ. Απαλ. ΤΑΠ ',TetragvnikaMetraTap as 'm2 ΤΑΠ',EtosAdeias as 'Ετος Αδειας',OnomasiaDimou as 'Ονομασία Δ/Κ',KodikosDimou as 'Κωδ. Δήμου' from dei_paroxes" ;
+				answer=System::Windows::Forms::MessageBox::Show("Προσοχή η ενέργεια θα διαγράψει τα υπαρχοντα δεδομένα. Θέλετε να συνεχίσετε?","Προσοχή",System::Windows::Forms::MessageBoxButtons::YesNo);
+				if (answer == System::Windows::Forms::DialogResult::Yes)
+					{   
+						NetWork::SqlServerFunctions lf;
+						try
+						{
+							SqlConnection^ con = gcnew SqlConnection();
+							con->ConnectionString = connectionString;
+					        if (lf.PingToHost(dei->Settings->Server)==true)
+								{
+									SqlConnection^ con = gcnew SqlConnection();
+									con->ConnectionString = connectionString;
+									if (lf.TableExists(con, dei->Settings->ServerDatabase, "dei_paroxes"))
+										{	con->Open();
+											this->adap= gcnew SqlDataAdapter(query,con);
+											this->ds = gcnew System::Data::DataSet();
+											adap->Fill(ds,"Teli_dei");
+											InputDataGrid->Rows->Clear();
+											InputDataGrid->Columns->Clear();
+											InputDataGrid->Refresh();
+											InputDataGrid->DataSource = ds->Tables[0];
+					
+									}
+									else
+									{
+										answer=System::Windows::Forms::MessageBox::Show("Δεν έχει δημιουργεί o πίνακας dei_paroxes θέλετε να δημιουργηθεί στον διακομιστή" + dei->Settings->Server ,"Προσοχή",System::Windows::Forms::MessageBoxButtons::YesNo);
+										if (answer == System::Windows::Forms::DialogResult::Yes)
+										{
+											query= "CREATE TABLE dei_paroxes(id int not NULL,Paroxi int not NULL, Onomateponimo char(255) NOT NULL, Odos char(255),Arithmos char(255),Poli char(255),TaxKodikas char(50),KodikosDK char(50), KodikosXreosis char(50),KodikosApalagis char(50),TetragonikaMetraDimTelon int,TetragonikaMetraDimForou int, KodikosXreosisTap char(50),DiktisXreosisXrisisTap char(50),KodikosApalagisTap char(50),TetragvnikaMetraTap int,EtosAdeias int,KodikosZonisTap int, OnomasiaDimou char(255),KodikosDimou char(255), PRIMARY KEY (Paroxi) )";
+											lf.RunQuery(connectionString,query);
+												System::Windows::Forms::MessageBox::Show("Επιτυχής δημιουργεία του πίνακα dei_paroxes" );
+										}
+									}
+							}
+							else
+							{
+								MessageBox::Show("Δεν είναι δυνατή η επικοινωνία με το διακομιστή" + dei->Settings->Server);
+							}
+						}
+						catch (Exception ^ ex)
+						{
+							MessageBox::Show("Σφάλμα επικοινωνίας με τον Sql Server");
+						}
+					}
+	
+				
+                
+		 }
+private: System::Void buttonSavetoSqlServer_Click(System::Object^  sender, System::EventArgs^  e) {
+			array<int>^ Errors=gcnew array<int>(InputDataGrid->RowCount+1);
+            array<String^>^ inputData = gcnew array<String^>(InputDataGrid->RowCount); 
+			System::Windows::Forms::DialogResult answer;
+			String^  query;
+
+			answer=System::Windows::Forms::MessageBox::Show("Προσοχή η ενέργεια θα διαγράψει τα υπαρχοντα δεδομένα στο SqlServer. Θέλετε να συνεχίσετε?","Προσοχή",System::Windows::Forms::MessageBoxButtons::YesNo);
+			if (answer == System::Windows::Forms::DialogResult::Yes)
+			{
+					NetWork::SqlServerFunctions lf;
+					String ^ connectionString = "Persist Security Info=False;Initial Catalog=" + dei->Settings->ServerDatabase + ";Data Source=" + dei->Settings->Server + ";User ID=" + dei->Settings->ServerUserName + ";Password=" + dei->Settings->ServerPassword + "; Connect Timeout = 0";
+					
+
+					if (lf.PingToHost(dei->Settings->Server))
+					{
+						SqlConnection^ con = gcnew SqlConnection();
+						con->ConnectionString = connectionString;
+						if (lf.TableExists(con, dei->Settings->ServerDatabase, "dei_paroxes"))
+						{
+							//Διαγραφή των υπαρχόντων δεδομένων
+							lf.RunQuery(connectionString,"Delete from dei_paroxes");
+							for (int i=0; i<InputDataGrid->RowCount; i++)
+							{ 
+								inputData [i] = "insert into dei_paroxes (id,Paroxi,Onomateponimo,Odos,Arithmos,Poli,TaxKodikas,KodikosDK,KodikosXreosis,KodikosApalagis,TetragonikaMetraDimTelon,TetragonikaMetraDimForou,KodikosXreosisTap,DiktisXreosisXrisisTap,KodikosApalagisTap,TetragvnikaMetraTap,EtosAdeias,KodikosZonisTap,OnomasiaDimou,KodikosDimou) VALUES (" ;
+								for (int j=0; j<InputDataGrid->ColumnCount;j++)
+									{
+										inputData[i]=inputData[i] + "'";
+										inputData[i] = inputData[i]+ InputDataGrid->Rows[i]->Cells[j]->Value->ToString();
+										inputData[i]=inputData[i] + "'";
+										if (j<InputDataGrid->ColumnCount-1)
+											inputData[i]=inputData[i] + ",";
+										else
+											inputData[i]=inputData[i] + ");";
+										}
+							}
+			
+           
+							for (int i=0;i<Errors->Length;i++)
+								Errors[i]=0;
+
+							Errors=lf.ButchRunQuery(connectionString,inputData); 
+							String^ ErrorMessage;
+					
+					if (Errors[0]==0)
+						 System::Windows::Forms::MessageBox::Show("Ολες οι εγγραφές εισήχθησαν κανονικά ","Πληροφορία");
+					else
+					{
+						ErrorMessage = "Εγγραφές: " + (Errors->Length-1).ToString() + ". Συνολικά σφάλματα: " + Errors[0].ToString() + ". Διαπιστώθηκαν προβλήματα στις εξής εγγραφές: ";
+						for (int i =1; i<Errors->Length; i++)
+						{
+							if (Errors[i] ==1)
+								ErrorMessage = ErrorMessage + (i-1).ToString() + ",";
+						}
+						System::Windows::Forms::MessageBox::Show(ErrorMessage,"Λάθος");
+					}
+		
+				}
+						else
+						{
+							answer=System::Windows::Forms::MessageBox::Show("Δεν έχει δημιουργεί o πίνακας dei_paroxes θέλετε να δημιουργηθεί στον διακομιστή" + dei->Settings->Server ,"Προσοχή",System::Windows::Forms::MessageBoxButtons::YesNo);
+										if (answer == System::Windows::Forms::DialogResult::Yes)
+										{
+											query= "CREATE TABLE dei_paroxes(id int not NULL,Paroxi int not NULL, Onomateponimo char(255) NOT NULL, Odos char(255),Arithmos char(255),Poli char(255),TaxKodikas char(50),KodikosDK char(50), KodikosXreosis char(50),KodikosApalagis char(50),TetragonikaMetraDimTelon int,TetragonikaMetraDimForou int, KodikosXreosisTap char(50),DiktisXreosisXrisisTap char(50),KodikosApalagisTap char(50),TetragvnikaMetraTap int,EtosAdeias int,KodikosZonisTap int, OnomasiaDimou char(255),KodikosDimou char(255), PRIMARY KEY (Paroxi) )";
+											lf.RunQuery(connectionString,query);
+												System::Windows::Forms::MessageBox::Show("Επιτυχής δημιουργεία του πίνακα dei_paroxes" );
+										}
+						}
+			}
+					else
+						MessageBox::Show("Δεν είναι δυνατή η επικοινωνία με το διακομιστή" + dei->Settings->Server);
+		}
+			
+	 }
+private: System::Void InputDataGrid_ColumnHeaderMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+			 this->UpdateDataFromGrid();			
 		 }
 };
 };

@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "teli_dei", "teli_dei\teli_dei.vcxproj", "{A90EC7D5-64D6-4822-8020-7A1A3D3847E3}"
 	ProjectSection(ProjectDependencies) = postProject
+		{21D51405-2335-4033-BC16-80CF7601BD64} = {21D51405-2335-4033-BC16-80CF7601BD64}
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B} = {3716D2C6-7204-4842-9988-C5F919B7AD5B}
 	EndProjectSection
 EndProject
@@ -16,6 +17,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "SetupTeliDei", "SetupTeliDe
 		{3716D2C6-7204-4842-9988-C5F919B7AD5B} = {3716D2C6-7204-4842-9988-C5F919B7AD5B}
 		{A90EC7D5-64D6-4822-8020-7A1A3D3847E3} = {A90EC7D5-64D6-4822-8020-7A1A3D3847E3}
 	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NetWork", "NetWork\NetWork.vbproj", "{21D51405-2335-4033-BC16-80CF7601BD64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +188,36 @@ Global
 		{5F2CC57C-1544-4F09-A149-7DCD8361BB57}.SingleImage|Win32.Build.0 = SingleImage
 		{5F2CC57C-1544-4F09-A149-7DCD8361BB57}.SingleImage|x86.ActiveCfg = SingleImage
 		{5F2CC57C-1544-4F09-A149-7DCD8361BB57}.SingleImage|x86.Build.0 = SingleImage
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|Win32.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|Win32.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|Win32.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.Release|x86.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|Win32.ActiveCfg = Release|Any CPU
+		{21D51405-2335-4033-BC16-80CF7601BD64}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

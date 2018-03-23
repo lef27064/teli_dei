@@ -44,7 +44,7 @@ ClassDei::ClassDei(int size)
 	  this->_TotalChangedRecords=0;
 	  this->_size=size;
 	  
-	  Settings = gcnew SettingsStruct("Ιωαννίνων","Πωγωνίου","Λάμπρου Ελευθέριος","2653360113",size);
+	  Settings = gcnew SettingsStruct(size);
 	  
 }	  
 //initialize χωρίς μέγεθος 
@@ -58,7 +58,7 @@ ClassDei::ClassDei(void)
 	   SavedData = gcnew SavedDataStruct(isize);
 
 	  
-	  Settings = gcnew SettingsStruct("Ιωαννίνων","Πωγωνίου","Λάμπρου Ελευθέριος","2653360113",isize);
+	  Settings = gcnew SettingsStruct(isize);
 	  this->_TotalInputRecords=0;
 	  this->_TotalChangedRecords=0;
 	  this->_size=isize;
@@ -335,6 +335,8 @@ void ClassDei::ReadSettings(ClassDei^ SettingsDei,String^ FileName )
 				   // A FileStream is needed to read the XML document.
 	if ( !File::Exists(path+"\\"+ FileName))
 		DefaultSettings();
+
+
 	FileStream^ fs = gcnew FileStream( path+"\\"+ FileName,FileMode::Open );
  
 				  /* Use the Deserialize method to restore the object's state with data from the XML document. */
@@ -398,15 +400,10 @@ void ClassDei::SaveSettings(void)
 	this->SaveSettings(this->Settings,"settings.xml");
 }
 
-void ClassDei::DefaultSettings(String^ Region, String^ Municipality, String^ UserName, String^ Telephone, int MaxRecords  )
+void ClassDei::DefaultSettings(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords, System::String^ iServer,System::String^ iServerDatabase,System::String^ iServerUserName, System::String^ iServerPassword)
 {
 	
-
-	this->Settings->Region = Region;
-	this->Settings->Municipality = Municipality;
-	this->Settings->UserName = UserName;
-	this->Settings->Telephone = Telephone;
-	this->Settings->MaxRecords = MaxRecords;
+	this->Settings = gcnew SettingsStruct(iRegion,iMunicipality,iUserName,iTelephone,iMaxRecords,iServer,iServerDatabase,iServerUserName,iServerPassword);
 
 	//
 	this->UpdateSettings();
@@ -415,13 +412,8 @@ void ClassDei::DefaultSettings(String^ Region, String^ Municipality, String^ Use
 void ClassDei::DefaultSettings()
 {
 	
-	this->Settings->Region = "Ιωάννινα";
-	this->Settings->Municipality = "Δήμος Πωγωνίου";
-	this->Settings->UserName = "Ελευθέριος Λάμπρου";
-	this->Settings->Telephone = "26533-60113";
-	this->Settings->MaxRecords = 20000;
-
-	//
+	this->Settings = gcnew SettingsStruct();
+		
 	this->UpdateSettings();
 }
 
@@ -506,13 +498,34 @@ SettingsStruct::SettingsStruct(void)
 	UserName="Λάμπρου Ελευθέριος";
 	Telephone="2653360104";
 	MaxRecords=20000;
+	Server="10.161.171.254";			
+	ServerDatabase="municipality";	
+	ServerUserName="sa";		
+	ServerPassword="";		
 }
 
-SettingsStruct::SettingsStruct(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords)
+SettingsStruct::SettingsStruct(String^ iRegion,String^ iMunicipality,String^ iUserName,String^ iTelephone,int iMaxRecords, System::String^ iServer,System::String^ iServerDatabase,System::String^ iServerUserName, System::String^ iServerPassword)
 {
 	Region=iRegion;
 	Municipality=iMunicipality;
 	UserName=iUserName;
 	Telephone=iTelephone;
+	MaxRecords=iMaxRecords;
+	Server=iServer;			
+	ServerDatabase=iServerDatabase;	
+	ServerUserName=iServerUserName;		
+	ServerPassword=iServerPassword;		
+}
+
+SettingsStruct::SettingsStruct(int iMaxRecords)
+{
+	Region="Ιωαννίνων";
+	Municipality="Πωγωνίου";
+	UserName="Λάμπρου Ελευθέριος";
+	Telephone="2653360104";
+	Server="10.161.171.254";			
+	ServerDatabase="municipality";	
+	ServerUserName="sa";		
+	ServerPassword="";		
 	MaxRecords=iMaxRecords;
 }
